@@ -1,0 +1,132 @@
+/* =========================================
+   IMPORT FONTS
+========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* =========================================
+   REVIEW PAGE CONTAINER
+   Main container for the review content
+========================================= */
+.review-container {
+  background-color: #131314; /* dark background */
+  padding: 2rem;
+  margin: 5rem auto; /* center on page */
+  text-align: center;
+  max-width: 900px;
+  border-radius: 1rem;
+  font-family: "Fira Sans", sans-serif;
+  color: white;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   REVIEW IMAGE
+   Shows cover image of review if available
+========================================= */
+.review-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+/* =========================================
+   REVIEW TITLE
+   Large colored title of the review
+========================================= */
+.review-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #5d90fd;
+}
+
+/* =========================================
+   REVIEW CATEGORIES
+   Container for category tags
+========================================= */
+.review-categories {
+  margin-bottom: 1rem;
+}
+
+/* Individual category tag styling */
+.review-category-tag {
+  display: inline-block;
+  background-color: #1f1f20;
+  color: #5d90fd;
+  border: 1px solid #5d90fd;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px; /* pill shape */
+  font-size: 0.9rem;
+  margin: 0 0.25rem 0.5rem 0;
+}
+
+/* =========================================
+   REVIEW METADATA
+   Rating stars and date info
+========================================= */
+.review-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Star icons for rating */
+.star {
+  font-size: 1.5rem;
+  color: white;
+  margin-right: 0.1rem;
+}
+
+/* Filled stars in gold */
+.star.filled {
+  color: gold;
+}
+
+/* Date of review */
+.review-date {
+  font-size: 0.85rem;
+  color: #adaaa8;
+}
+
+/* =========================================
+   REVIEW BODY
+   Main text content of the review
+========================================= */
+.review-body {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Review author info */
+.review-author {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #ccc;
+  font-style: italic;
+}
+
+/* =========================================
+   RESPONSIVE STYLING
+   Adjust layout for smaller screens
+========================================= */
+@media (max-width: 768px) {
+  .review-container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .review-title {
+    font-size: 2rem;
+  }
+
+  .review-body {
+    font-size: 1.1rem;
+  }
+}

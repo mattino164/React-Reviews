@@ -1,0 +1,100 @@
+/* =========================================
+   AUTH PAGE CONTAINER
+   Centers the login card vertically and horizontally
+========================================= */
+.login-page .auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* makes it cover most of viewport height */
+}
+
+/* =========================================
+   LOGIN CARD
+   White box with shadow, border, padding, and max width
+========================================= */
+.login-page .auth-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 4rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 3px solid #2b6dfc;
+  text-align: center;
+}
+
+/* =========================================
+   CARD TITLE
+   Styled heading for the login form
+========================================= */
+.login-page .auth-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+  color: #5d90fd;
+  margin-bottom: 1rem;
+}
+
+/* =========================================
+   FORM INPUTS
+   Full-width inputs with padding and rounded borders
+========================================= */
+.login-page .auth-card input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  border: 1.5px solid #cccccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+/* Highlight border on focus */
+.login-page .auth-card input:focus {
+  border-color: #5d90fd;
+}
+
+/* =========================================
+   LOGIN BUTTON
+   Gradient background, rounded corners, hover effect
+========================================= */
+.login-page .auth-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-image: linear-gradient(#5d90fd, #2b6dfc);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.5s ease;
+}
+
+/* Darker gradient on hover */
+.login-page .auth-btn:hover {
+  background-image: linear-gradient(#2563eb, #1e40af);
+}
+
+/* =========================================
+   FOOTER TEXT
+   Shows sign-up link for users without an account
+========================================= */
+.login-page .auth-footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #2c2c2e;
+}
+
+/* Footer link styling */
+.login-page .auth-footer a {
+  color: #2b6dfc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Underline link on hover */
+.login-page .auth-footer a:hover {
+  text-decoration: underline;
+}

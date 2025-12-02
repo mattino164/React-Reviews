@@ -1,0 +1,111 @@
+/* =========================================
+   IMPORT GOOGLE FONTS
+========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital@0;1&family=Quicksand:wght@300&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+/* =========================================
+   HEADER STYLING
+   Sticky top navigation with shadow and border
+========================================= */
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* mobile/default padding */
+  margin: 0 auto;
+  background-color: #131314;
+  border-bottom: 5px solid #5d90fd; /* accent border */
+  z-index: 1000; /* stays on top */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* subtle shadow */
+}
+
+/* Site/brand name */
+.header-name {
+  font-size: 2rem;
+}
+
+/* Logo image inside header */
+header img {
+  width: 6em;
+}
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+div nav {
+  display: flex;
+  gap: 2rem; /* spacing between links */
+  font-family: "Fira Sans", sans-serif;
+}
+
+div nav a {
+  text-decoration: none;
+  color: white;
+  letter-spacing: 0.5px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+div nav a:hover {
+  color: #5d90fd; /* highlight on hover */
+  text-decoration: underline;
+  text-underline-offset: 6px; /* spacing of underline */
+}
+
+/* =========================================
+   WELCOME TEXT (for logged-in user)
+========================================= */
+.welcome-text {
+  color: #fff;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* =========================================
+   LOGOUT BUTTON
+========================================= */
+.logout-btn {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(90deg, #5d90fd, #4364f7);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.logout-btn:hover {
+  background: linear-gradient(90deg, #4364f7, #5d90fd);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   FLEX CONTAINER FOR WELCOME TEXT + LOGOUT BUTTON
+========================================= */
+nav > span.welcome-text + .logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* =========================================
+   MEDIA QUERIES
+   Adjust padding for larger screens
+========================================= */
+@media (min-width: 769px) {
+  header {
+    padding: 1rem 10rem; /* wider padding for desktop */
+  }
+}

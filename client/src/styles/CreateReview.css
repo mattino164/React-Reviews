@@ -1,0 +1,194 @@
+/* =========================================
+   IMPORT GOOGLE FONTS
+========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&family=Raleway:wght@400;600&display=swap");
+
+/* =========================================
+   PAGE CONTAINER
+   Center the review creation card
+========================================= */
+.create-review-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+/* =========================================
+   CARD STYLING
+   White background with shadow and border
+========================================= */
+.create-review-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 3rem;
+  max-width: 800px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border: 3px solid #2b6dfc;
+  font-family: "Fira Sans", sans-serif;
+}
+
+/* =========================================
+   CARD TITLE
+========================================= */
+.create-review-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+  color: #5d90fd;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   FORM INPUTS, SELECTS, TEXTAREAS
+========================================= */
+.create-review-form input,
+.create-review-form select,
+.create-review-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  border: 1.5px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  color: black;
+  transition: border 0.3s;
+}
+
+.create-review-form input:focus,
+.create-review-form select:focus,
+.create-review-form textarea:focus {
+  border-color: #5d90fd;
+}
+
+/* =========================================
+   RATING CONTAINER
+   Label and number input for rating
+========================================= */
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.rating-label {
+  color: #5d90fd;
+  font-weight: 500;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.rating-container input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1.5px solid #ccc;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.rating-container input:focus {
+  border-color: #5d90fd;
+}
+
+/* =========================================
+   CATEGORY SELECTOR
+   Dropdown and selected tags container
+========================================= */
+.category-selector {
+  width: 100%;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.category-selector select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1.5px solid #ccc;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  background-color: white;
+  appearance: none; /* remove default browser styling */
+}
+
+.category-selector select:focus {
+  border-color: #5d90fd;
+}
+
+/* Tags container for selected categories */
+.category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Individual tag styling */
+.category-tag {
+  background: #5d90fd;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Remove button inside each tag */
+.category-tag button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* =========================================
+   TEXTAREA
+   Auto-resizing with hidden overflow
+========================================= */
+.create-review-form textarea {
+  resize: none; /* prevent manual resize */
+  overflow: hidden; /* hide scrollbars */
+  font-family: inherit;
+  font-size: 1rem;
+  transition: height 0.2s ease;
+  min-height: 100px;
+}
+
+/* =========================================
+   SUBMIT BUTTON
+   Gradient background with hover effect
+========================================= */
+.create-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-image: linear-gradient(135deg, #5d90fd, #2563eb);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.create-btn:hover {
+  background-image: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: scale(1.02);
+}

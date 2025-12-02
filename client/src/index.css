@@ -1,0 +1,35 @@
+/* -------------------------------------------
+   BODY STYLING
+   Sets the main background, text color, and font
+-------------------------------------------- */
+body {
+  /* Complex layered radial gradients for background effect */
+  background: radial-gradient(
+      circle at center,
+      rgba(11, 36, 74, 0.8) 0%,
+      rgba(0, 0, 0, 0.9) 70%
+    ),
+    /* Dark central gradient */
+      radial-gradient(circle at top left, rgba(43, 72, 119, 0.8), transparent),
+    /* Soft highlight at top-left */
+      radial-gradient(
+        circle at bottom right,
+        rgba(92, 118, 169, 0.5),
+        transparent
+      ); /* Soft highlight at bottom-right */
+
+  /* Fallback background color */
+  background-color: #101036;
+
+  /* Blend all background layers using overlay mode for richer effect */
+  background-blend-mode: overlay;
+
+  /* Text color for readability on dark background */
+  color: white;
+
+  /* Main font for the site */
+  font-family: "Poppins", sans-serif;
+
+  /* Remove default margins and center horizontally if needed */
+  margin: 0 auto;
+}
