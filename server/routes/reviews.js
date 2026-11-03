@@ -72,7 +72,14 @@ router.get("/", async (req, res) => {
   else if (sort === "ratingLow") sortOption = { rating: 1 };
 
   try {
+    console.log("Review model collection:", Review.collection.name);
+    console.log("Review model database:", Review.db.name);
+
+    const count = await Review.countDocuments();
+    console.log("Total reviews found:", count);
+
     const reviews = await Review.find(filter).sort(sortOption);
+    console.log("Reviews returned:", reviews.length);
     res.json(reviews);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch reviews" });
