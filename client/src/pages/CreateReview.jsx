@@ -4,6 +4,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../api";
 import "../styles/CreateReview.css";
 
 // ------------------------------
@@ -69,7 +70,7 @@ export default function CreateReview() {
       form.categories.forEach((c) => data.append("category", c));
       if (form.image) data.append("image", form.image);
 
-      await axios.post("http://localhost:5000/api/reviews", data, {
+      await axios.post(`${API_URL}/api/reviews`, data, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true, // Send cookies for auth
       });
