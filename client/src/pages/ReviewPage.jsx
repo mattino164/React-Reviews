@@ -3,6 +3,7 @@
 // ------------------------------
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../api";
 import "../styles/ReviewPage.css";
 
 // ------------------------------
@@ -17,7 +18,7 @@ export default function ReviewPage() {
   // Fetch Review Data
   // ------------------------------
   useEffect(() => {
-    fetch(`http://localhost:5000/api/reviews/${id}`)
+    fetch(`${API_URL}/api/reviews/${id}`)
       .then((res) => res.json())
       .then((data) => setReview(data))
       .catch((err) => console.error("Error loading review:", err));
@@ -36,7 +37,7 @@ export default function ReviewPage() {
       {/* Review Image */}
       {review.image && (
         <img
-          src={`http://localhost:5000${review.image}`} // prepend server URL
+          src={`${API_URL}${review.image}`} // prepend server URL
           alt={`${review.title} cover`}
           className="review-image"
         />
