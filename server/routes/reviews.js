@@ -9,23 +9,22 @@ const Review = require("../models/Review");
 
 const router = express.Router();
 
-// ------------------------------
-// JWT Secret Key
-// ------------------------------
-// In production, move this to a .env file for security
-const JWT_SECRET = "your_secret_key_here";
+// JWT_SECRET must match the secret used by the authentication routes.
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error("Missing required environment variable: JWT_SECRET");
+}
 
 // ------------------------------
 // Authentication Middleware
 // ------------------------------
-// Checks for a valid JWT token in cookies and sets req.userId
 const authMiddleware = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ message: "Unauthorized" });
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    req.userId = decoded.id; // Save user ID to request for later use
+    req.userId = decoded.id;
     next();
   } catch {
     res.status(401).json({ message: "Unauthorized" });
@@ -35,9 +34,8 @@ const authMiddleware = (req, res, next) => {
 // ------------------------------
 // Configure Multer for Image Uploads
 // ------------------------------
-// Files are stored in "uploads/" folder with unique timestamped names
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
+  destination: (req, file, cb) => cb(null, path.join(__dirname, "../uploads")),
   filename: (req, file, cb) =>
     cb(null, Date.now() + path.extname(file.originalname)),
 });
@@ -52,25 +50,22 @@ const upload = multer({
     const mimetype = filetypes.test(file.mimetype);
 
     if (mimetype && extname) return cb(null, true);
-    cb("Only .jpg and .png files are allowed!");
+    cb(new Error("Only .jpg and .png files are allowed!"));
   },
 });
 
 // ------------------------------
 // Route: GET All Reviews
 // ------------------------------
-// Supports optional filtering by category and sorting
 router.get("/", async (req, res) => {
   const { category, sort } = req.query;
   let filter = {};
   let sortOption = {};
 
-  // Filter by category if provided
   if (category) {
     filter.category = { $in: [category] };
   }
 
-  // Sorting options
   if (sort === "newest") sortOption = { createdAt: -1 };
   else if (sort === "oldest") sortOption = { createdAt: 1 };
   else if (sort === "ratingHigh") sortOption = { rating: -1 };
@@ -100,7 +95,6 @@ router.get("/:id", async (req, res) => {
 // ------------------------------
 // Route: POST New Review
 // ------------------------------
-// Requires authentication and optional image upload
 router.post("/", authMiddleware, upload.single("image"), async (req, res) => {
   try {
     const newReview = new Review({
@@ -108,7 +102,7 @@ router.post("/", authMiddleware, upload.single("image"), async (req, res) => {
       category: req.body.category,
       rating: req.body.rating,
       author: req.body.author,
-      authorId: req.userId, // From authMiddleware
+      authorId: req.userId,
       body: req.body.body,
       image: req.file ? `/uploads/${req.file.filename}` : null,
     });
@@ -123,18 +117,15 @@ router.post("/", authMiddleware, upload.single("image"), async (req, res) => {
 // ------------------------------
 // Route: DELETE Review by ID
 // ------------------------------
-// Only the review owner can delete their review
 router.delete("/:id", authMiddleware, async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
     if (!review) return res.status(404).json({ message: "Not found" });
 
-    // Check ownership
     if (review.authorId.toString() !== String(req.userId)) {
       return res.status(403).json({ message: "Forbidden" });
     }
 
-    // Delete review
     await Review.deleteOne({ _id: req.params.id });
     res.json({ message: "Deleted" });
   } catch (err) {
@@ -143,7 +134,4 @@ router.delete("/:id", authMiddleware, async (req, res) => {
   }
 });
 
-// ------------------------------
-// Export Router
-// ------------------------------
 module.exports = router;
