@@ -2,6 +2,9 @@
 
 A full-stack review website where users can browse, filter, sort, and read reviews, create an account, and submit their own reviews with an optional image.
 
+🔗 Project Links
+Live Demo: ([https://marvel-rivals.vercel.app/](https://react-reviews-murex.vercel.app/))
+
 ## Features
 
 - Browse reviews from the home page
