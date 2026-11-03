@@ -52,11 +52,26 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // ------------------------------
 // MongoDB Connection
 // ------------------------------
+
+// ------------------------------
+// MongoDB Connection
+// ------------------------------
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .then(async () => {
+    console.log("✅ Connected to MongoDB");
+    console.log("📁 Database:", mongoose.connection.name);
 
+    const collections = await mongoose.connection.db
+      .listCollections()
+      .toArray();
+
+    console.log(
+      "📚 Collections:",
+      collections.map((collection) => collection.name)
+    );
+  })
+  .catch((err) => console.log("❌ MongoDB connection error:", err));
 // ------------------------------
 // API Routes
 // ------------------------------
