@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "./api";
 
 // COMPONENT IMPORTS
 import Header from "./components/Header";
@@ -20,7 +21,7 @@ function App() {
   // Check if user is logged in when app mounts
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/me", { withCredentials: true })
+      .get(`${API_URL}/api/auth/me`, { withCredentials: true })
       .then((res) => setUser(res.data)) // store user info in state
       .catch(() => setUser(null)); // if not logged in, set user to null
   }, []);

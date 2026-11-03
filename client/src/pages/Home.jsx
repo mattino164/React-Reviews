@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../api";
 import ReviewCard from "../components/ReviewCard";
 import FilterSortBar from "../components/FilterSortBar";
 import "../styles/Home.css";
@@ -30,7 +31,7 @@ export default function Home() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/reviews", {
+        const res = await axios.get(`${API_URL}/api/reviews`, {
           params: { category: filter, sort }, // Send filter and sort as query params
         });
         setReviews(res.data);
@@ -49,7 +50,7 @@ export default function Home() {
   // Determines if "Create Review" button should be shown
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/me", { withCredentials: true })
+      .get(`${API_URL}/api/auth/me`, { withCredentials: true })
       .then((res) => setUser(res.data))
       .catch(() => setUser(null));
   }, []);
