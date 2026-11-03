@@ -4,6 +4,7 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../api";
 import "../styles/Header.css"; // Header styling
 import title from "../assets/Images/MRL-title-light.png"; // Logo image
 
@@ -25,7 +26,7 @@ export default function Header({ user, setUser }) {
     if (!user) {
       const fetchUser = async () => {
         try {
-          const res = await axios.get("http://localhost:5000/api/auth/me", {
+          const res = await axios.get(`${API_URL}/api/auth/me`, {
             withCredentials: true, // Send cookies for auth
           });
           setUser(res.data); // Set user state with response
@@ -44,7 +45,7 @@ export default function Header({ user, setUser }) {
   const logout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        `${API_URL}/api/auth/logout`,
         {},
         { withCredentials: true }
       );
