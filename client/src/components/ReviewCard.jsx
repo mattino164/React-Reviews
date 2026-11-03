@@ -3,6 +3,7 @@
 // ------------------------------
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { API_URL } from "../api";
 import "../styles/ReviewCard.css"; // Styling for the review card
 
 // ------------------------------
@@ -20,7 +21,7 @@ export default function ReviewCard({ review, user, setReviews, reviews }) {
   // Sends a DELETE request to the backend and removes the review from state
   const deleteReview = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/reviews/${id}`, {
+      await axios.delete(`${API_URL}/api/reviews/${id}`, {
         withCredentials: true, // Send cookies for authentication
       });
 
@@ -40,7 +41,7 @@ export default function ReviewCard({ review, user, setReviews, reviews }) {
         {/* Review Image (optional) */}
         {review.image && (
           <img
-            src={`http://localhost:5000${review.image}`}
+            src={`${API_URL}${review.image}`}
             alt={review.title}
             className="review-card-image"
           />
